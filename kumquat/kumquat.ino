@@ -4,12 +4,13 @@
 */
 
 // Pins 
-#define mosiPin   17
-#define sclk      19
-#define dc        14
-#define resetPin  15
-#define cs        16
-#define 
+#define mosiPin       17
+#define sclk          19
+#define dc            14
+#define resetPin      15
+#define cs            16
+#define mgLEDPin      6
+#define ardcoreLEDPin 3 
 
 // Colors
 #define	BLACK           0x0000
@@ -32,12 +33,18 @@ void setup() {
   Serial.begin(9600);
   Serial.println("setup complete");
   tft.begin();
+    pinMode(ardcoreLEDPin, OUTPUT);  
+  pinMode(mgLEDPin, OUTPUT);
 }
 
 void loop() {
   tft.fillScreen(RED);
+  digitalWrite(mgLEDPin, HIGH);
+  digitalWrite(ardcoreLEDPin, HIGH);
   delay(500);
   tft.fillScreen(GREEN);
+  digitalWrite(mgLEDPin, LOW);
+  digitalWrite(ardcoreLEDPin, LOW);
   delay(500);
   tft.fillScreen(BLUE);
   delay(500);
